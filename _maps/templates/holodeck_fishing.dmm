@@ -1,0 +1,285 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/open/floor/holofloor/beach,
+/area/template_noop)
+"b" = (
+/turf/open/floor/holofloor/beach/coast_b{
+	dir = 8
+	},
+/area/template_noop)
+"d" = (
+/obj/structure/railing/wood{
+	dir = 1
+	},
+/turf/open/floor/holofloor/beach/coast_b{
+	dir = 8
+	},
+/area/template_noop)
+"f" = (
+/obj/structure/chair/plastic,
+/turf/open/floor/holofloor/wood,
+/area/template_noop)
+"p" = (
+/obj/structure/railing/wood{
+	dir = 1
+	},
+/turf/open/floor/holofloor/beach/coast_t{
+	dir = 4
+	},
+/area/template_noop)
+"q" = (
+/obj/structure/railing/wood,
+/turf/open/floor/holofloor/beach/coast_t{
+	dir = 8
+	},
+/area/template_noop)
+"w" = (
+/turf/open/floor/holofloor/beach/coast_b{
+	dir = 4
+	},
+/area/template_noop)
+"A" = (
+/turf/open/floor/holofloor/stairs{
+	dir = 8
+	},
+/area/template_noop)
+"D" = (
+/obj/structure/table/wood,
+/obj/item/fishing_rod{
+	pixel_x = 6
+	},
+/obj/item/fishing_rod{
+	pixel_x = -6
+	},
+/obj/item/fishing_rod,
+/turf/open/floor/holofloor/wood,
+/area/template_noop)
+"E" = (
+/obj/structure/table/wood,
+/obj/item/storage/toolbox/fishing{
+	pixel_x = -8
+	},
+/obj/item/bait_can/worm{
+	pixel_x = 11;
+	pixel_y = 6
+	},
+/obj/item/bait_can/worm{
+	pixel_x = 11;
+	pixel_y = 6
+	},
+/turf/open/floor/holofloor/wood,
+/area/template_noop)
+"F" = (
+/turf/open/floor/holofloor/wood,
+/area/template_noop)
+"G" = (
+/obj/structure/railing/wood{
+	dir = 1
+	},
+/turf/open/floor/holofloor/beach/coast_b{
+	dir = 4
+	},
+/area/template_noop)
+"J" = (
+/obj/structure/railing/wood,
+/turf/open/floor/holofloor/beach/coast_t{
+	dir = 4
+	},
+/area/template_noop)
+"K" = (
+/turf/open/floor/holofloor/beach/coast_t{
+	dir = 8
+	},
+/area/template_noop)
+"L" = (
+/turf/open/floor/holofloor/beach/water,
+/area/template_noop)
+"M" = (
+/obj/structure/railing/wood{
+	dir = 1
+	},
+/turf/open/floor/holofloor/beach/coast_t{
+	dir = 8
+	},
+/area/template_noop)
+"P" = (
+/obj/structure/fluff/beach_towel,
+/turf/open/floor/holofloor/beach,
+/area/template_noop)
+"Q" = (
+/obj/structure/table/wood,
+/obj/item/fishing_hook/magnet,
+/obj/item/fishing_hook/magnet,
+/obj/item/fishing_hook{
+	pixel_x = 8
+	},
+/obj/item/fishing_hook{
+	pixel_x = 8
+	},
+/obj/item/fishing_line{
+	pixel_x = -6
+	},
+/obj/item/fishing_hook{
+	pixel_x = 8
+	},
+/obj/item/fishing_line{
+	pixel_x = -6
+	},
+/turf/open/floor/holofloor/wood,
+/area/template_noop)
+"R" = (
+/obj/vehicle/ridden/lavaboat{
+	desc = "A shabby raft used for fishing trips on the local river.";
+	name = "fishing raft"
+	},
+/obj/item/bikehorn/rubberducky,
+/turf/open/floor/holofloor/beach/water,
+/area/template_noop)
+"S" = (
+/obj/structure/railing/wood{
+	dir = 1
+	},
+/obj/machinery/fishing_portal_generator,
+/turf/open/floor/holofloor/beach/water,
+/area/template_noop)
+"T" = (
+/obj/structure/railing/wood,
+/turf/open/floor/holofloor/beach/water,
+/area/template_noop)
+"V" = (
+/turf/open/floor/holofloor/stairs{
+	dir = 4
+	},
+/area/template_noop)
+"W" = (
+/obj/structure/railing/wood,
+/turf/open/floor/holofloor/beach/coast_b{
+	dir = 8
+	},
+/area/template_noop)
+"X" = (
+/turf/open/floor/holofloor/beach/coast_t{
+	dir = 4
+	},
+/area/template_noop)
+"Y" = (
+/obj/structure/railing/wood{
+	dir = 1
+	},
+/turf/open/floor/holofloor/beach/water,
+/area/template_noop)
+"Z" = (
+/obj/structure/railing/wood,
+/turf/open/floor/holofloor/beach/coast_b{
+	dir = 4
+	},
+/area/template_noop)
+
+(1,1,1) = {"
+a
+a
+F
+F
+F
+a
+P
+a
+P
+a
+"}
+(2,1,1) = {"
+X
+J
+A
+A
+A
+p
+X
+X
+X
+X
+"}
+(3,1,1) = {"
+w
+Z
+F
+F
+F
+G
+w
+w
+w
+w
+"}
+(4,1,1) = {"
+L
+T
+Q
+F
+f
+Y
+L
+L
+L
+L
+"}
+(5,1,1) = {"
+L
+T
+E
+F
+f
+S
+L
+R
+L
+L
+"}
+(6,1,1) = {"
+L
+T
+D
+F
+f
+Y
+L
+L
+L
+L
+"}
+(7,1,1) = {"
+b
+W
+F
+F
+F
+d
+b
+b
+b
+b
+"}
+(8,1,1) = {"
+K
+q
+V
+V
+V
+M
+K
+K
+K
+K
+"}
+(9,1,1) = {"
+a
+a
+F
+F
+F
+a
+P
+a
+P
+a
+"}

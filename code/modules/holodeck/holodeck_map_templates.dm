@@ -131,6 +131,18 @@
 	description = "An arena for playing Tactical Game Cards."
 	mappath = "_maps/templates/holodeck_card_battle.dmm"
 
+/datum/map_template/holodeck/baseball
+	name = "Holodeck - Fishing Simulator"
+	template_id = "holodeck_fishing"
+	description = "Fishing from a bridge over a river."
+	mappath = "_maps/templates/holodeck_fishing.dmm"
+
+/datum/map_template/holodeck/baseball
+	name = "Holodeck - Emergency Bomb Shelter Simulation"
+	template_id = "holodeck_bombshelter"
+	description = "Won't hold up against another blast, but will keep air in and fire out."
+	mappath = "_maps/templates/holodeck_bombshelter.dmm"
+
 //bad evil no good programs
 
 /datum/map_template/holodeck/medicalsim
