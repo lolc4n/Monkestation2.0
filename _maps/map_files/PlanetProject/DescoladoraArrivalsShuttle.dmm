@@ -1,0 +1,53 @@
+"a" = (/obj/effect/turf_decal/tile/blue/diagonal_edge,/turf/open/floor/iron/white/diagonal,/area/shuttle/arrival)
+"b" = (/obj/effect/turf_decal/siding/blue{dir = 8},/turf/open/floor/mineral/titanium,/area/shuttle/arrival)
+"e" = (/obj/effect/turf_decal/siding/blue/corner{dir = 4},/turf/open/floor/mineral/titanium,/area/shuttle/arrival)
+"f" = (/obj/machinery/door/airlock/titanium{name = "Transport Shuttle Airlock"; dir = 4},/obj/structure/fans/tiny/invisible,/turf/open/floor/plating,/area/shuttle/arrival)
+"i" = (/obj/machinery/power/shuttle_engine/heater,/obj/structure/window/reinforced/spawner/directional/north,/obj/structure/window/reinforced/spawner/directional/west,/obj/structure/fans/tiny/invisible,/turf/open/floor/plating,/area/shuttle/arrival)
+"j" = (/obj/machinery/power/shuttle_engine/heater,/obj/structure/window/reinforced/spawner/directional/north,/obj/structure/window/reinforced/spawner/directional/east,/obj/structure/fans/tiny/invisible,/turf/open/floor/plating,/area/shuttle/arrival)
+"k" = (/obj/machinery/light/directional/east,/turf/open/floor/mineral/titanium,/area/shuttle/arrival)
+"m" = (/obj/structure/rack,/obj/item/pickaxe,/obj/item/pickaxe,/obj/item/shovel,/obj/item/shovel,/obj/item/storage/bag/ore,/obj/item/storage/bag/ore,/obj/item/storage/bag/ore,/obj/item/storage/bag/ore,/obj/item/hatchet,/obj/item/hatchet,/turf/open/floor/mineral/titanium/yellow,/area/shuttle/arrival)
+"n" = (/turf/template_noop,/area/template_noop)
+"p" = (/obj/effect/turf_decal/siding/blue/corner{dir = 1},/turf/open/floor/mineral/titanium,/area/shuttle/arrival)
+"q" = (/turf/open/floor/mineral/titanium,/area/shuttle/arrival)
+"r" = (/obj/structure/closet/emcloset,/obj/item/storage/medkit/o2,/obj/item/tank/internals/emergency_oxygen,/obj/item/tank/internals/emergency_oxygen,/obj/item/tank/internals/emergency_oxygen,/obj/item/tank/internals/emergency_oxygen,/obj/item/tank/internals/emergency_oxygen,/turf/open/floor/mineral/titanium/yellow,/area/shuttle/arrival)
+"s" = (/obj/effect/turf_decal/siding/blue/corner,/turf/open/floor/mineral/titanium,/area/shuttle/arrival)
+"t" = (/turf/closed/wall/mineral/titanium,/area/shuttle/arrival)
+"u" = (/obj/machinery/light/directional/south,/obj/structure/table,/obj/item/storage/medkit/regular,/obj/item/storage/medkit/regular,/obj/item/storage/medkit/regular,/turf/open/floor/mineral/titanium/yellow,/area/shuttle/arrival)
+"v" = (/obj/effect/spawner/structure/window/reinforced/shuttle,/obj/structure/fans/tiny/invisible,/turf/open/floor/plating,/area/shuttle/arrival)
+"x" = (/obj/effect/turf_decal/siding/blue/corner{dir = 8},/turf/open/floor/mineral/titanium,/area/shuttle/arrival)
+"y" = (/obj/effect/turf_decal/tile/blue/diagonal_edge,/obj/structure/chair/comfy/shuttle,/obj/structure/window/reinforced/spawner/directional/north,/turf/open/floor/iron/white/diagonal,/area/shuttle/arrival)
+"A" = (/obj/structure/rack,/obj/item/storage/toolbox/electrical{pixel_y = 5},/obj/item/storage/toolbox/electrical{pixel_y = 5},/obj/item/storage/toolbox/mechanical{pixel_x = 3; pixel_y = -2},/obj/item/storage/toolbox/mechanical{pixel_x = 3; pixel_y = -2},/turf/open/floor/mineral/titanium/yellow,/area/shuttle/arrival)
+"B" = (/obj/structure/fans/tiny/invisible,/obj/effect/spawner/structure/window/reinforced/shuttle,/turf/open/floor/plating,/area/shuttle/arrival)
+"C" = (/obj/effect/turf_decal/siding/blue,/turf/open/floor/mineral/titanium,/area/shuttle/arrival)
+"D" = (/obj/machinery/power/shuttle_engine/propulsion,/turf/open/floor/plating,/area/shuttle/arrival)
+"E" = (/obj/effect/turf_decal/siding/blue{dir = 4},/turf/open/floor/mineral/titanium,/area/shuttle/arrival)
+"F" = (/obj/structure/closet/cardboard,/obj/item/reagent_containers/cup/glass/waterbottle/large{pixel_x = -5; pixel_y = 3},/obj/item/reagent_containers/cup/glass/waterbottle/large{pixel_x = -5; pixel_y = 3},/obj/item/reagent_containers/cup/glass/waterbottle/large{pixel_x = -5; pixel_y = 3},/obj/item/reagent_containers/cup/glass/waterbottle/large{pixel_x = -5; pixel_y = 3},/obj/item/reagent_containers/cup/glass/waterbottle/large{pixel_x = -5; pixel_y = 3},/obj/item/reagent_containers/cup/glass/waterbottle/large{pixel_x = 2; pixel_y = 3},/obj/item/reagent_containers/cup/glass/waterbottle/large{pixel_x = 2; pixel_y = 3},/obj/item/reagent_containers/cup/glass/waterbottle/large{pixel_x = 2; pixel_y = 3},/obj/item/reagent_containers/cup/glass/waterbottle/large{pixel_x = 2; pixel_y = 3},/obj/item/reagent_containers/cup/glass/waterbottle/large{pixel_x = 2; pixel_y = 3},/obj/item/reagent_containers/cup/glass/waterbottle/large{pixel_x = -2},/obj/item/reagent_containers/cup/glass/waterbottle/large{pixel_x = -2},/obj/item/reagent_containers/cup/glass/waterbottle/large{pixel_x = -2},/obj/item/reagent_containers/cup/glass/waterbottle/large{pixel_x = -2},/obj/item/reagent_containers/cup/glass/waterbottle/large{pixel_x = -2},/obj/item/reagent_containers/cup/glass/waterbottle/large{pixel_x = 5},/obj/item/reagent_containers/cup/glass/waterbottle/large{pixel_x = 5},/obj/item/reagent_containers/cup/glass/waterbottle/large{pixel_x = 5},/obj/item/reagent_containers/cup/glass/waterbottle/large{pixel_x = 5},/obj/item/reagent_containers/cup/glass/waterbottle/large{pixel_x = 5},/obj/item/reagent_containers/cup/glass/waterbottle/large{pixel_x = 1; pixel_y = -3},/obj/item/reagent_containers/cup/glass/waterbottle/large{pixel_x = 1; pixel_y = -3},/obj/item/reagent_containers/cup/glass/waterbottle/large{pixel_x = 1; pixel_y = -3},/obj/item/reagent_containers/cup/glass/waterbottle/large{pixel_x = 1; pixel_y = -3},/obj/item/reagent_containers/cup/glass/waterbottle/large{pixel_x = 1; pixel_y = -3},/obj/item/reagent_containers/cup/glass/waterbottle/large{pixel_x = 8; pixel_y = -3},/obj/item/reagent_containers/cup/glass/waterbottle/large{pixel_x = 8; pixel_y = -3},/obj/item/reagent_containers/cup/glass/waterbottle/large{pixel_x = 8; pixel_y = -3},/obj/item/reagent_containers/cup/glass/waterbottle/large{pixel_x = 8; pixel_y = -3},/obj/item/reagent_containers/cup/glass/waterbottle/large{pixel_x = 8; pixel_y = -3},/turf/open/floor/mineral/titanium/yellow,/area/shuttle/arrival)
+"K" = (/obj/effect/turf_decal/siding/blue{dir = 4},/obj/machinery/light/directional/west,/turf/open/floor/mineral/titanium,/area/shuttle/arrival)
+"M" = (/obj/machinery/light/directional/west,/obj/structure/closet/cardboard,/obj/item/stack/sheet/iron/fifty{pixel_x = -2; pixel_y = 2},/obj/item/stack/sheet/iron/fifty{pixel_x = -2; pixel_y = 2},/obj/item/stack/sheet/iron/fifty{pixel_x = -2; pixel_y = 2},/obj/item/stack/sheet/glass/fifty{pixel_x = 3; pixel_y = 3},/obj/item/stack/sheet/glass/fifty{pixel_x = 3; pixel_y = 3},/turf/open/floor/mineral/titanium/yellow,/area/shuttle/arrival)
+"N" = (/obj/machinery/door/airlock/titanium{name = "Transport Shuttle Airlock"},/turf/open/floor/mineral/titanium,/area/shuttle/arrival)
+"O" = (/obj/machinery/light/directional/east,/obj/structure/closet/cardboard,/obj/item/stack/sheet/cloth/ten,/obj/item/stack/sheet/cloth/ten,/obj/item/stack/sheet/cloth/ten,/obj/item/stack/sheet/cloth/ten,/obj/item/stack/sheet/cloth/ten,/obj/item/stack/sheet/mineral/wood/fifty,/obj/item/stack/sheet/mineral/wood/fifty,/turf/open/floor/mineral/titanium/yellow,/area/shuttle/arrival)
+"R" = (/obj/machinery/power/shuttle_engine/heater,/obj/structure/window/reinforced/spawner/directional/north,/obj/structure/fans/tiny/invisible,/turf/open/floor/plating,/area/shuttle/arrival)
+"U" = (/obj/docking_port/mobile/arrivals{dir = 1},/turf/closed/wall/mineral/titanium,/area/shuttle/arrival)
+"V" = (/obj/structure/closet/cardboard,/obj/item/food/canned/beans{pixel_x = -5; pixel_y = 3},/obj/item/food/canned/beans{pixel_x = -5; pixel_y = 3},/obj/item/food/canned/beans{pixel_x = -5; pixel_y = 3},/obj/item/food/canned/beans{pixel_x = -5; pixel_y = 3},/obj/item/food/canned/beans{pixel_x = -5; pixel_y = 3},/obj/item/food/canned/beans{pixel_x = 2; pixel_y = 3},/obj/item/food/canned/beans{pixel_x = 2; pixel_y = 3},/obj/item/food/canned/beans{pixel_x = 2; pixel_y = 3},/obj/item/food/canned/beans{pixel_x = 2; pixel_y = 3},/obj/item/food/canned/beans{pixel_x = 2; pixel_y = 3},/obj/item/food/canned/beans{pixel_x = -2},/obj/item/food/canned/beans{pixel_x = -2},/obj/item/food/canned/beans{pixel_x = -2},/obj/item/food/canned/beans{pixel_x = -2},/obj/item/food/canned/beans{pixel_x = -2},/obj/item/food/canned/beans{pixel_x = 5},/obj/item/food/canned/beans{pixel_x = 5},/obj/item/food/canned/beans{pixel_x = 5},/obj/item/food/canned/beans{pixel_x = 5},/obj/item/food/canned/beans{pixel_x = 5},/obj/item/food/canned/beans{pixel_x = 1; pixel_y = -3},/obj/item/food/canned/beans{pixel_x = 1; pixel_y = -3},/obj/item/food/canned/beans{pixel_x = 1; pixel_y = -3},/obj/item/food/canned/beans{pixel_x = 1; pixel_y = -3},/obj/item/food/canned/beans{pixel_x = 1; pixel_y = -3},/obj/item/food/canned/beans{pixel_x = 8; pixel_y = -3},/obj/item/food/canned/beans{pixel_x = 8; pixel_y = -3},/obj/item/food/canned/beans{pixel_x = 8; pixel_y = -3},/obj/item/food/canned/beans{pixel_x = 8; pixel_y = -3},/obj/item/food/canned/beans{pixel_x = 8; pixel_y = -3},/turf/open/floor/mineral/titanium/yellow,/area/shuttle/arrival)
+"X" = (/obj/effect/turf_decal/siding/blue{dir = 1},/turf/open/floor/mineral/titanium,/area/shuttle/arrival)
+"Y" = (/obj/effect/turf_decal/tile/blue/diagonal_edge,/obj/structure/chair/comfy/shuttle{dir = 1},/obj/structure/window/reinforced/spawner/directional/south,/turf/open/floor/iron/white/diagonal,/area/shuttle/arrival)
+
+(1,1,1) = {"
+nntBBBtnn
+nnBFqVBnn
+tBtMqOtBt
+trttNttrt
+BsCCCxqqf
+tKYYYbmkt
+vEyyybAqv
+vEaaabqqv
+tKYYYbmkt
+vEyyybAqv
+vEaaabqqv
+tKYYYbmkt
+BEyyybAqf
+teXXXpqqt
+tRRjuiRRt
+tDDDtDDDt
+tnnnUnnnt
+"}
