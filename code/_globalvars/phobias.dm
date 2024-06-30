@@ -50,12 +50,13 @@ GLOBAL_LIST_INIT(phobia_regexes, list(
 	"strangers" = construct_phobia_regex("strangers"),
 	"the supernatural" = construct_phobia_regex("the supernatural"),
 	"blood" = construct_phobia_regex("blood"),
+	"christian minecraft" = construct_phobia_regex("christian minecraft"), //monkestation edit: added for new smite. -dexee 05/24/24
 ))
 
 GLOBAL_LIST_INIT(phobia_mobs, list(
 	"aliens" = typecacheof(list(
 		/mob/living/carbon/alien,
-		/mob/living/simple_animal/slime,
+		/mob/living/basic/slime,
 	)),
 	"anime" = typecacheof(list(/mob/living/basic/guardian)),
 	"birds" = typecacheof(list(
@@ -69,7 +70,7 @@ GLOBAL_LIST_INIT(phobia_mobs, list(
 		/mob/living/basic/pet/penguin,
 		/mob/living/simple_animal/bot/secbot,
 	)),
-	"doctors" = typecacheof(list(/mob/living/simple_animal/bot/medbot)),
+	"doctors" = typecacheof(list(/mob/living/basic/bot/medbot)),
 	"heresy" = typecacheof(list(
 		/mob/living/basic/heretic_summon,
 	)),
@@ -107,7 +108,7 @@ GLOBAL_LIST_INIT(phobia_mobs, list(
 	)),
 	"aliens" = typecacheof(list(
 		/mob/living/carbon/alien,
-		/mob/living/simple_animal/slime,
+		/mob/living/basic/slime,
 	)),
 	"conspiracies" = typecacheof(list(
 		/mob/living/simple_animal/bot/secbot,

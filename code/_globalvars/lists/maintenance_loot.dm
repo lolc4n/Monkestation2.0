@@ -211,6 +211,7 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/stock_parts/cell/high = 1,
 		/obj/item/storage/box/clown = 1,
 		/obj/item/weaponcrafting/receiver = 1,
+		/obj/item/book/granter/crafting_recipe/death_sandwich = 1,
 		) = 8,
 
 	list(//medical and chemicals
@@ -227,6 +228,7 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		list(//drinks
 			/obj/item/reagent_containers/cup/glass/bottle/vodka = 1,
 			/obj/item/reagent_containers/cup/glass/drinkingglass/filled/nuka_cola = 1,
+			/obj/item/reagent_containers/cup/glass/drinkingglass/filled/sunset_sarsaparilla = 1, //monkestation edit
 			/obj/item/reagent_containers/cup/soda_cans/grey_bull = 1,
 			) = 1,
 		list(//sprayers
@@ -365,11 +367,13 @@ GLOBAL_LIST_INIT(oddity_loot, list(//oddity: strange or crazy items
 		/obj/item/dice/d20/fate/stealth/one_use = 1, //Looks like a d20, keep the d20 in the uncommon pool.
 		/obj/item/shadowcloak = 1,
 		/obj/item/spear/grey_tide = 1,
+		/* MONKESTATION EDIT - removal of self antag items from maints loot
 		list(//music
 			/obj/item/instrument/saxophone/spectral = 1,
 			/obj/item/instrument/trombone/spectral = 1,
 			/obj/item/instrument/trumpet/spectral = 1,
 			) = 1,
+		*/ // MONKESTATION EDIT END
 		/obj/item/toy/cards/deck/tarot/haunted = 1,
 		/obj/item/gun/magic/wand/polymorph = 1, //monkestation edit
 		/obj/item/organ/internal/butt/atomic = 1, //monkestation edit

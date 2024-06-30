@@ -259,8 +259,6 @@ GLOBAL_VAR_INIT(focused_tests, focused_tests())
 	//Same to above. Needs a client / mob / hallucination to observe it to exist.
 	ignore += typesof(/obj/projectile/hallucination)
 	ignore += typesof(/obj/item/hallucinated)
-	//Can't pass in a thing to glow
-	ignore += typesof(/obj/effect/abstract/eye_lighting)
 	//We don't have a pod
 	ignore += typesof(/obj/effect/pod_landingzone_effect)
 	ignore += typesof(/obj/effect/pod_landingzone)
@@ -319,6 +317,7 @@ GLOBAL_VAR_INIT(focused_tests, focused_tests())
 	ignore += typesof(/datum/weather_event)
 	ignore += typesof(/datum/particle_weather)
 	ignore += typesof(/mob/living/basic/aquatic)
+	ignore += typesof(/obj/machinery/station_map)
 
 	return ignore
 

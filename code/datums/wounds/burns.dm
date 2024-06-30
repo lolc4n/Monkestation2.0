@@ -49,7 +49,7 @@
 
 	for(var/datum/reagent/reagent as anything in victim.reagents.reagent_list)
 		if(reagent.chemical_flags & REAGENT_AFFECTS_WOUNDS)
-			reagent.on_burn_wound_processing()
+			reagent.on_burn_wound_processing(src)
 
 	if(limb.current_gauze)
 		limb.seep_gauze(WOUND_BURN_SANITIZATION_RATE * seconds_per_tick)
@@ -79,11 +79,14 @@
 	infestation += infestation_rate * seconds_per_tick
 	switch(infestation)
 		if(0 to WOUND_INFECTION_MODERATE)
+			return
+
 		if(WOUND_INFECTION_MODERATE to WOUND_INFECTION_SEVERE)
 			if(SPT_PROB(15, seconds_per_tick))
 				victim.adjustToxLoss(0.2)
 				if(prob(6))
 					to_chat(victim, span_warning("The blisters on your [limb.plaintext_zone] ooze a strange pus..."))
+
 		if(WOUND_INFECTION_SEVERE to WOUND_INFECTION_CRITICAL)
 			if(!disabling)
 				if(SPT_PROB(1, seconds_per_tick))

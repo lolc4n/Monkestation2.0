@@ -399,6 +399,7 @@
 	color = RUNE_COLOR_RED
 	invocation = "Fuu ma'jin!"
 
+/* overriden in monkestation/code/modules/antagonists/cult/blood_magic.dm
 /obj/item/melee/blood_magic/stun/afterattack(mob/living/target, mob/living/carbon/user, proximity)
 	if(!isliving(target) || !proximity)
 		return
@@ -439,6 +440,7 @@
 				carbon_target.set_jitter_if_lower(30 SECONDS)
 		uses--
 	..()
+*/
 
 //Teleportation
 /obj/item/melee/blood_magic/teleport
@@ -603,7 +605,6 @@
 					user.visible_message(span_danger("The dark cloud recedes from what was formerly [candidate], revealing a\n [construct_class]!"))
 					make_new_construct_from_class(construct_class, THEME_CULT, candidate, user, FALSE, T)
 					uses--
-					candidate.mmi = null
 					qdel(candidate)
 					channeling = FALSE
 				else

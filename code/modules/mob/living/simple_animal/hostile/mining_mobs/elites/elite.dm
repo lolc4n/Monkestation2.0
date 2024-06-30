@@ -190,8 +190,16 @@ While using this makes the system rely on OnFire, it still gives options for tim
 				addtimer(CALLBACK(src, PROC_REF(spawn_elite)), 30)
 				return
 			visible_message(span_boldwarning("Something within [src] stirs..."))
-			var/list/candidates = poll_candidates_for_mob("Do you want to play as a lavaland elite?", ROLE_SENTIENCE, ROLE_SENTIENCE, 5 SECONDS, src, POLL_IGNORE_LAVALAND_ELITE)
-			if(candidates.len)
+			var/list/candidates = SSpolling.poll_ghost_candidates_for_mob(
+				"Do you want to play as a lavaland elite?",
+				role = ROLE_SENTIENCE,
+				poll_time = 5 SECONDS,
+				target_mob = src,
+				ignore_category = POLL_IGNORE_LAVALAND_ELITE,
+				pic_source = src,
+				role_name_text = "lavaland elite"
+			)
+			if(length(candidates))
 				audible_message(span_boldwarning("The stirring sounds increase in volume!"))
 				elitemind = pick(candidates)
 				elitemind.playsound_local(get_turf(elitemind), 'sound/effects/magic.ogg', 40, 0)
@@ -349,7 +357,6 @@ While using this makes the system rely on OnFire, it still gives options for tim
 		to_chat(mychild, "<b>Your max health has been halved, but can now heal by standing on your tumor. Note, it's your only way to heal.\n\
 			Bear in mind, if anyone interacts with your tumor, you'll be resummoned here to carry out another fight. In such a case, you will regain your full max health.\n\
 			Also, be weary of your fellow inhabitants, they likely won't be happy to see you!</b>")
-		to_chat(mychild, "<span class='big bold'>Note that you are a lavaland monster, and thus not allied to the station. You should not cooperate or act friendly with any station crew unless under extreme circumstances!</span>")
 
 /obj/item/tumor_shard
 	name = "tumor shard"

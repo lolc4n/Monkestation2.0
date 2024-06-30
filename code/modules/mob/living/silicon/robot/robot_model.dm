@@ -283,7 +283,7 @@
 	var/mob/living/silicon/robot/cyborg = loc
 	if(cyborg.hat)
 		cyborg.hat.forceMove(drop_location())
-		cyborg.hat = null
+
 	cyborg.cut_overlays()
 	cyborg.setDir(SOUTH)
 	do_transform_delay()
@@ -614,7 +614,7 @@
 
 	reagents.expose(our_turf, TOUCH, min(1, 10 / reagents.total_volume))
 	// We use more water doing this then mopping
-	reagents.remove_any(2) //reaction() doesn't use up the reagents
+	reagents.remove_all(2) //reaction() doesn't use up the reagents
 
 /datum/action/toggle_buffer/update_button_name(atom/movable/screen/movable/action_button/current_button, force)
 	if(buffer_on)

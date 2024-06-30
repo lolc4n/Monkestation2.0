@@ -168,11 +168,12 @@ SUBSYSTEM_DEF(gamemode)
 	for(var/type in subtypesof(/datum/storyteller))
 		storytellers[type] = new type()
 
-	for(var/type in typesof(/datum/round_event_control))
-		var/datum/round_event_control/event = new type()
-		if(!event.typepath || !event.name)
-			continue //don't want this one! leave it for the garbage collector
+	for(var/datum/round_event_control/event_type as anything in typesof(/datum/round_event_control))
+		if(!event_type::typepath || !event_type::name)
+			continue
+		var/datum/round_event_control/event = new event_type
 		if(!event.valid_for_map())
+			qdel(event)
 			continue // event isn't good for this map no point in trying to add it to the list
 		control += event //add it to the list of all events (controls)
 	getHoliday()
@@ -188,8 +189,7 @@ SUBSYSTEM_DEF(gamemode)
 		event_pools[event.track] += event //Add it to the categorized event pools
 
 	load_roundstart_data()
-
-//	return ..()
+	return SS_INIT_SUCCESS
 
 
 /datum/controller/subsystem/gamemode/fire(resumed = FALSE)
@@ -260,7 +260,10 @@ SUBSYSTEM_DEF(gamemode)
 		else if(living_players && isliving(player))
 			if(!ishuman(player) && !isAI(player))
 				continue
-			if(!(player.z in SSmapping.levels_by_trait(ZTRAIT_STATION)))
+			// I split these checks up to make the code more readable ~Lucy
+			var/is_on_station = is_station_level(player.z)
+			var/is_late_arrival = HAS_TRAIT(SSstation, STATION_TRAIT_LATE_ARRIVALS) && istype(get_area(player), /area/shuttle/arrival)
+			if(!is_on_station && !is_late_arrival)
 				continue
 			candidate_candidates += player
 
@@ -270,8 +273,14 @@ SUBSYSTEM_DEF(gamemode)
 		if(!observers)
 			if(!ready_players && !isliving(candidate))
 				continue
-			if(no_antags && candidate.mind.special_role)
-				continue
+			if(no_antags && !isnull(candidate.mind.antag_datums))
+				var/real = FALSE
+				for(var/datum/antagonist/antag_datum as anything in candidate.mind.antag_datums)
+					if(antag_datum.count_against_dynamic_roll_chance && !(antag_datum.antag_flags & FLAG_FAKE_ANTAG))
+						real = TRUE
+						break
+				if(real)
+					continue
 			if(restricted_roles && (candidate.mind.assigned_role.title in restricted_roles))
 				continue
 			if(length(required_roles) && !(candidate.mind.assigned_role.title in required_roles))
@@ -367,8 +376,9 @@ SUBSYSTEM_DEF(gamemode)
 
 /// At this point we've rolled roundstart events and antags and we handle leftover points here.
 /datum/controller/subsystem/gamemode/proc/handle_post_setup_points()
-	for(var/track in event_track_points) //Just halve the points for now.
-		event_track_points[track] *= 0.5
+//	for(var/track in event_track_points) //Just halve the points for now.
+//		event_track_points[track] *= 0.5 TESTING HOW THINGS GO WITHOUT THIS HALVING OF POINTS
+	return
 
 /// Because roundstart events need 2 steps of firing for purposes of antags, here is the first step handled, happening before occupation division.
 /datum/controller/subsystem/gamemode/proc/handle_pre_setup_roundstart_events()
@@ -757,7 +767,7 @@ SUBSYSTEM_DEF(gamemode)
 					event.reoccurence_penalty_multiplier = value
 				if("shared_occurence_type")
 					if(!isnull(value))
-						value = text2path(value)
+						value = "[value]"
 					event.shared_occurence_type = value
 
 /// Loads config values from game_options.txt

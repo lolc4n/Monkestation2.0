@@ -68,16 +68,27 @@
 		"Rancher",
 	)
 
+/datum/job/brig_physician
+	alt_titles = list(
+		"Jail Doctor",
+		"Brig Orderly",
+		"Prison Medic",
+		"Chief Tickler",
+		"Navy Corpsman",
+	)
+
 /datum/job/captain
 	alt_titles = list(
 		"Captain",
 		"Station Commander",
 		"Commanding Officer",
 		"Site Manager",
+		"Criminally Underpaid Babysitter",
 	)
 
 /datum/job/cargo_technician
 	alt_titles = list(
+		"Cargo Technician",
 		"Warehouse Technician",
 		"Deck Worker",
 		"Mailman",
@@ -246,6 +257,7 @@
 		"Convict",
 		"Felon",
 		"Inmate",
+		"Gamer",
 	)
 
 /datum/job/psychologist
@@ -258,12 +270,14 @@
 
 /datum/job/quartermaster
 	alt_titles = list(
+		"Quartermaster",
 		"Union Requisitions Officer",
 		"Deck Chief",
 		"Warehouse Supervisor",
 		"Supply Foreman",
-		"Head of Supply",
+		"Pretend Head of Supply",
 		"Logistics Coordinator",
+		"Cargyptian Overseer",
 	)
 
 /datum/job/research_director
@@ -312,6 +326,7 @@
 
 /datum/job/shaft_miner
 	alt_titles = list(
+		"Shaft Miner",
 		"Union Miner",
 		"Excavator",
 		"Spelunker",

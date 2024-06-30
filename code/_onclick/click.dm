@@ -114,14 +114,14 @@
 				MiddleClickOn(A, params)
 			return
 		if(LAZYACCESS(modifiers, ALT_CLICK)) // alt and alt-gr (rightalt)
-			if((istate & ISTATE_SECONDARY))
-				alt_click_on_secondary(A)
-			else
-				AltClickOn(A)
+			AltClickOn(A)
 			return
 		if(LAZYACCESS(modifiers, CTRL_CLICK))
 			CtrlClickOn(A)
 			return
+	else if(LAZYACCESS(modifiers, ALT_CLICK)) // monke edit: ensure alt-secondary works
+		alt_click_on_secondary(A)
+		return
 
 	if(incapacitated(IGNORE_RESTRAINTS|IGNORE_STASIS|IGNORE_CRIT))
 		return
@@ -359,6 +359,7 @@
 	return
 
 /atom/proc/ShiftClick(mob/user)
+	SEND_SIGNAL(src, COMSIG_SHIFT_CLICKED_ON, user)
 	var/flags = SEND_SIGNAL(user, COMSIG_CLICK_SHIFT, src)
 	if(flags & COMSIG_MOB_CANCEL_CLICKON)
 		return

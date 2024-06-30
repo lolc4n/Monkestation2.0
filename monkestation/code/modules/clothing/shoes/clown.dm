@@ -20,5 +20,13 @@
 	desc = "A court jester's shoes, updated with modern squeaking technology."
 	icon_state = "jester_shoes"
 	icon = 'icons/obj/clothing/shoes.dmi'
-	squeak_sound = list('monkestation/sound/effects/clown_jingle1.ogg'=1, 'monkestation/sound/effects/clown_jingle2.ogg') //jingHONK jinglHONK jHONKgle jiHONKgle
+	squeak_sound = list('monkestation/sound/effects/clown_jingle1.ogg'=1, 'monkestation/sound/effects/clown_jingle2.ogg'=1) //jingHONK jinglHONK jHONKgle jiHONKgle
 
+/obj/item/clothing/shoes/clown_shoes/harlequin_boots
+	name = "harlequin boots"
+	desc = "For the more serious clowns, Now with a internal bell"
+	icon = 'monkestation/icons/obj/clothing/shoes.dmi'
+	icon_state = "harlequin_boots"
+	worn_icon = 'monkestation/icons/mob/clothing/feet.dmi'
+	worn_icon_state = "harlequin_boots"
+	squeak_sound = list('monkestation/sound/effects/clown_jingle1.ogg'=1, 'monkestation/sound/effects/clown_jingle2.ogg'=1)

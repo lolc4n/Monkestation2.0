@@ -359,7 +359,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink, (-14))
 		return
 
 	busy = FALSE
-	reagents.remove_any(5)
+	reagents.remove_all(5)
 	reagents.expose(user, TOUCH, 5 / max(reagents.total_volume, 5))
 	begin_reclamation()
 	if(washing_face)
@@ -763,7 +763,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink/kitchen, (-16))
 
 /obj/structure/curtain/attackby(obj/item/W, mob/user)
 	if (istype(W, /obj/item/toy/crayon))
-		color = input(user,"","Choose Color",color) as color
+		color = tgui_color_picker(user, "", "Choose Color", color)
 	else
 		return ..()
 
@@ -815,6 +815,14 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink/kitchen, (-16))
 	color = null
 	alpha = 255
 	opaque_closed = TRUE
+
+/obj/structure/curtain/bounty/start_closed
+	icon_state = "bounty-closed"
+
+/obj/structure/curtain/bounty/start_closed/Initialize(mapload)
+	. = ..()
+	if(open)
+		toggle()
 
 /obj/structure/curtain/cloth
 	color = null

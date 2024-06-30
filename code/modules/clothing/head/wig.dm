@@ -31,7 +31,6 @@
 		icon_state = hair_style.icon_state
 	return ..()
 
-
 /obj/item/clothing/head/wig/worn_overlays(mutable_appearance/standing, isinhands = FALSE, file2use)
 	. = ..()
 	if(isinhands)
@@ -50,7 +49,7 @@
 
 /obj/item/clothing/head/wig/attack_self(mob/user)
 	var/new_style = tgui_input_list(user, "Select a hairstyle", "Wig Styling", GLOB.roundstart_hairstyles_list - "Bald")
-	var/newcolor = adjustablecolor ? input(usr,"","Choose Color",color) as color|null : null
+	var/newcolor = adjustablecolor ? tgui_color_picker(usr, "", "Choose Color", color) : null
 	if(!user.can_perform_action(src))
 		return
 	if(new_style && new_style != hairstyle)

@@ -122,6 +122,9 @@
 
 /obj/effect/abstract/liquid_turf/proc/movable_entered(datum/source, atom/movable/AM)
 	SIGNAL_HANDLER
+	if(!liquid_group)
+		qdel(src)
+		return
 
 	var/turf/T = source
 	if(isobserver(AM))
@@ -143,8 +146,9 @@
 			liquid_group.expose_atom(stepped_human, 1, TOUCH)
 	else if (isliving(AM))
 		var/mob/living/L = AM
-		if(prob(7) && !(L.movement_type & FLYING) && L.body_position == STANDING_UP)
-			L.slip(30, T, NO_SLIP_WHEN_WALKING, 0, TRUE)
+		if(liquid_group.slippery)
+			if(prob(7) && !(L.movement_type & FLYING) && L.body_position == STANDING_UP)
+				L.slip(30, T, NO_SLIP_WHEN_WALKING, 0, TRUE)
 
 	if(fire_state)
 		AM.fire_act((T20C+50) + (50*fire_state), 125)
@@ -196,7 +200,8 @@
 	RegisterSignal(my_turf, COMSIG_TURF_MOB_FALL, PROC_REF(mob_fall))
 	RegisterSignal(my_turf, COMSIG_ATOM_EXAMINE, PROC_REF(examine_turf))
 
-	SEND_SIGNAL(my_turf, COMSIG_TURF_LIQUIDS_CREATION, src)
+	if(SEND_SIGNAL(my_turf, COMSIG_TURF_LIQUIDS_CREATION, src) & BLOCK_LIQUID_CREATION)
+		return INITIALIZE_HINT_QDEL
 
 	if(z)
 		QUEUE_SMOOTH(src)
@@ -243,6 +248,10 @@
  *  */
 /obj/effect/abstract/liquid_turf/proc/examine_turf(turf/source, mob/examiner, list/examine_list)
 	SIGNAL_HANDLER
+
+	if(!liquid_group)
+		qdel(src)
+		return
 
 	// This should always have reagents if this effect object exists, but as a sanity check...
 	if(!length(liquid_group.reagents.reagent_list))

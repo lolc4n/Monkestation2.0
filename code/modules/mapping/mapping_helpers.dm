@@ -110,6 +110,7 @@
 	layer = DOOR_HELPER_LAYER
 	late = TRUE
 
+/* replaced in monkestation\code\modules\mapping\mapping_helpers.dm
 /obj/effect/mapping_helpers/airlock/Initialize(mapload)
 	. = ..()
 	if(!mapload)
@@ -121,6 +122,7 @@
 		log_mapping("[src] failed to find an airlock at [AREACOORD(src)]")
 	else
 		payload(airlock)
+*/
 
 /obj/effect/mapping_helpers/airlock/LateInitialize()
 	. = ..()
@@ -244,6 +246,166 @@
 		log_mapping("[src] at [AREACOORD(src)] tried to autoname the [airlock] but it's already autonamed!")
 	else
 		airlock.autoname = TRUE
+
+//air alarm helpers
+/obj/effect/mapping_helpers/airalarm
+	desc = "You shouldn't see this. Report it please."
+	layer = ABOVE_OBJ_LAYER
+	late = TRUE
+
+/obj/effect/mapping_helpers/airalarm/Initialize(mapload)
+	. = ..()
+	if(!mapload)
+		log_mapping("[src] spawned outside of mapload!")
+		return INITIALIZE_HINT_QDEL
+
+	var/obj/machinery/airalarm/target = locate(/obj/machinery/airalarm) in loc
+	if(isnull(target))
+		var/area/target_area = get_area(target)
+		log_mapping("[src] failed to find an air alarm at [AREACOORD(src)] ([target_area.type]).")
+	else
+		payload(target)
+
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/effect/mapping_helpers/airalarm/LateInitialize()
+	. = ..()
+	var/obj/machinery/airalarm/target = locate(/obj/machinery/airalarm) in loc
+
+	if(isnull(target))
+		qdel(src)
+		return
+	if(target.unlocked)
+		target.unlock()
+
+	if(target.tlv_cold_room)
+		target.set_tlv_cold_room()
+	if(target.tlv_no_checks)
+		target.set_tlv_no_checks()
+	if(target.tlv_no_checks && target.tlv_cold_room)
+		CRASH("Tried to apply incompatible air alarm threshold helpers!")
+
+	if(target.syndicate_access)
+		target.give_syndicate_access()
+	if(target.away_general_access)
+		target.give_away_general_access()
+	if(target.engine_access)
+		target.give_engine_access()
+	if(target.mixingchamber_access)
+		target.give_mixingchamber_access()
+	if(target.all_access)
+		target.give_all_access()
+	if(target.syndicate_access + target.away_general_access + target.engine_access + target.mixingchamber_access + target.all_access > 1)
+		CRASH("Tried to combine incompatible air alarm access helpers!")
+
+	if(target.air_sensor_chamber_id)
+		target.setup_chamber_link()
+
+	target.update_appearance()
+	qdel(src)
+
+/obj/effect/mapping_helpers/airalarm/proc/payload(obj/machinery/airalarm/target)
+	return
+
+/obj/effect/mapping_helpers/airalarm/unlocked
+	name = "airalarm unlocked interface helper"
+	icon_state = "airalarm_unlocked_interface_helper"
+
+/obj/effect/mapping_helpers/airalarm/unlocked/payload(obj/machinery/airalarm/target)
+	if(target.unlocked)
+		var/area/area = get_area(target)
+		log_mapping("[src] at [AREACOORD(src)] [(area.type)] tried to unlock the [target] but it's already unlocked!")
+	target.unlocked = TRUE
+
+/obj/effect/mapping_helpers/airalarm/syndicate_access
+	name = "airalarm syndicate access helper"
+	icon_state = "airalarm_syndicate_access_helper"
+
+/obj/effect/mapping_helpers/airalarm/syndicate_access/payload(obj/machinery/airalarm/target)
+	if(target.syndicate_access)
+		var/area/area = get_area(target)
+		log_mapping("[src] at [AREACOORD(src)] [(area.type)] tried to adjust [target]'s access to syndicate but it's already changed!")
+	target.syndicate_access = TRUE
+
+/obj/effect/mapping_helpers/airalarm/away_general_access
+	name = "airalarm away access helper"
+	icon_state = "airalarm_away_general_access_helper"
+
+/obj/effect/mapping_helpers/airalarm/away_general_access/payload(obj/machinery/airalarm/target)
+	if(target.away_general_access)
+		var/area/area = get_area(target)
+		log_mapping("[src] at [AREACOORD(src)] [(area.type)] tried to adjust [target]'s access to away_general but it's already changed!")
+	target.away_general_access = TRUE
+
+/obj/effect/mapping_helpers/airalarm/engine_access
+	name = "airalarm engine access helper"
+	icon_state = "airalarm_engine_access_helper"
+
+/obj/effect/mapping_helpers/airalarm/engine_access/payload(obj/machinery/airalarm/target)
+	if(target.engine_access)
+		var/area/area = get_area(target)
+		log_mapping("[src] at [AREACOORD(src)] [(area.type)] tried to adjust [target]'s access to engine_access but it's already changed!")
+	target.engine_access = TRUE
+
+/obj/effect/mapping_helpers/airalarm/mixingchamber_access
+	name = "airalarm mixingchamber access helper"
+	icon_state = "airalarm_mixingchamber_access_helper"
+
+/obj/effect/mapping_helpers/airalarm/mixingchamber_access/payload(obj/machinery/airalarm/target)
+	if(target.mixingchamber_access)
+		var/area/area = get_area(target)
+		log_mapping("[src] at [AREACOORD(src)] [(area.type)] tried to adjust [target]'s access to mixingchamber_access but it's already changed!")
+	target.mixingchamber_access = TRUE
+
+/obj/effect/mapping_helpers/airalarm/all_access
+	name = "airalarm all access helper"
+	icon_state = "airalarm_all_access_helper"
+
+/obj/effect/mapping_helpers/airalarm/all_access/payload(obj/machinery/airalarm/target)
+	if(target.all_access)
+		var/area/area = get_area(target)
+		log_mapping("[src] at [AREACOORD(src)] [(area.type)] tried to adjust [target]'s access to all_access but it's already changed!")
+	target.all_access = TRUE
+
+/obj/effect/mapping_helpers/airalarm/tlv_cold_room
+	name = "airalarm cold room tlv helper"
+	icon_state = "airalarm_tlv_cold_room_helper"
+
+/obj/effect/mapping_helpers/airalarm/tlv_cold_room/payload(obj/machinery/airalarm/target)
+	if(target.tlv_cold_room)
+		var/area/area = get_area(target)
+		log_mapping("[src] at [AREACOORD(src)] [(area.type)] tried to adjust [target]'s tlv to cold_room but it's already changed!")
+	target.tlv_cold_room = TRUE
+
+/obj/effect/mapping_helpers/airalarm/tlv_no_checks
+	name = "airalarm no checks tlv helper"
+	icon_state = "airalarm_tlv_no_checks_helper"
+
+/obj/effect/mapping_helpers/airalarm/tlv_no_checks/payload(obj/machinery/airalarm/target)
+	if(target.tlv_no_checks)
+		var/area/area = get_area(target)
+		log_mapping("[src] at [AREACOORD(src)] [(area.type)] tried to adjust [target]'s tlv to no_checks but it's already changed!")
+	target.tlv_no_checks = TRUE
+
+/obj/effect/mapping_helpers/airalarm/link
+	name = "airalarm link helper"
+	icon_state = "airalarm_link_helper"
+	var/chamber_id = ""
+	var/allow_link_change = FALSE
+
+/obj/effect/mapping_helpers/airalarm/link/Initialize(mapload)
+	. = ..()
+	if(!mapload)
+		log_mapping("[src] spawned outside of mapload!")
+		return INITIALIZE_HINT_QDEL
+
+	var/obj/machinery/airalarm/alarm = locate(/obj/machinery/airalarm) in loc
+	if(!isnull(alarm))
+		alarm.air_sensor_chamber_id = chamber_id
+		alarm.allow_link_change = allow_link_change
+	else
+		log_mapping("[src] failed to find air alarm at [AREACOORD(src)].")
+		return INITIALIZE_HINT_QDEL
 
 //apc helpers
 /obj/effect/mapping_helpers/apc
@@ -651,8 +813,15 @@ INITIALIZE_IMMEDIATE(/obj/effect/mapping_helpers/no_lava)
 	name = "Dead Body placer"
 	late = TRUE
 	icon_state = "deadbodyplacer"
+	///if TRUE, was spawned out of mapload.
 	var/admin_spawned
-	var/bodycount = 2 //number of bodies to spawn
+	///number of bodies to spawn
+	var/bodycount = 3
+	/// These species IDs will be barred from spawning if morgue_cadaver_disable_nonhumans is disabled (In the future, we can also dehardcode this)
+	var/list/blacklisted_from_rng_placement = list(
+		SPECIES_ETHEREAL, // they revive on death which is bad juju
+		SPECIES_HUMAN,  // already have a 50% chance of being selected
+	)
 
 /obj/effect/mapping_helpers/dead_body_placer/Initialize(mapload)
 	. = ..()
@@ -661,23 +830,23 @@ INITIALIZE_IMMEDIATE(/obj/effect/mapping_helpers/no_lava)
 	admin_spawned = TRUE
 
 /obj/effect/mapping_helpers/dead_body_placer/LateInitialize()
-	var/area/a = get_area(src)
-	var/list/trays = list()
-	for (var/i in a.contents)
-		if (istype(i, /obj/structure/bodycontainer/morgue))
-			if(admin_spawned)
-				var/obj/structure/bodycontainer/morgue/early_morgue_tray = i
-				if(early_morgue_tray.connected.loc != early_morgue_tray)
-					continue
-			trays += i
-	if(!trays.len)
+	var/area/morgue_area = get_area(src)
+	var/list/obj/structure/bodycontainer/morgue/trays = list()
+	for(var/turf/area_turf as anything in morgue_area.get_contained_turfs())
+		var/obj/structure/bodycontainer/morgue/morgue_tray = locate() in area_turf
+		if(isnull(morgue_tray) || !morgue_tray.beeper || morgue_tray.connected.loc != morgue_tray)
+			continue
+		trays += morgue_tray
+
+	var/numtrays = length(trays)
+	if(numtrays == 0)
 		if(admin_spawned)
 			message_admins("[src] spawned at [ADMIN_VERBOSEJMP(src)] failed to find a closed morgue to spawn a body!")
 		else
 			log_mapping("[src] at [x],[y] could not find any morgues.")
 		return
 
-	var/reuse_trays = (trays.len < bodycount) //are we going to spawn more trays than bodies?
+	var/reuse_trays = (numtrays < bodycount) //are we going to spawn more trays than bodies?
 
 	var/use_species = !(CONFIG_GET(flag/morgue_cadaver_disable_nonhumans))
 	var/species_probability = CONFIG_GET(number/morgue_cadaver_other_species_probability)
@@ -686,35 +855,39 @@ INITIALIZE_IMMEDIATE(/obj/effect/mapping_helpers/no_lava)
 	if(use_species)
 		var/list/temp_list = get_selectable_species()
 		usable_races = temp_list.Copy()
-		usable_races -= SPECIES_ETHEREAL //they revive on death which is bad juju
-		LAZYREMOVE(usable_races, SPECIES_HUMAN)
-		if(!usable_races)
+		LAZYREMOVE(usable_races, blacklisted_from_rng_placement)
+		if(!LAZYLEN(usable_races))
 			notice("morgue_cadaver_disable_nonhumans. There are no valid roundstart nonhuman races enabled. Defaulting to humans only!")
 		if(override_species)
 			warning("morgue_cadaver_override_species BEING OVERRIDEN since morgue_cadaver_disable_nonhumans is disabled.")
 	else if(override_species)
-		usable_races += override_species
+		LAZYADD(usable_races, override_species)
 
-	for (var/i = 1 to bodycount)
+	var/guaranteed_human_spawned = FALSE
+	for (var/i in 1 to bodycount)
 		var/obj/structure/bodycontainer/morgue/morgue_tray = reuse_trays ? pick(trays) : pick_n_take(trays)
 		var/obj/structure/closet/body_bag/body_bag = new(morgue_tray.loc)
-		var/mob/living/carbon/human/new_human = new /mob/living/carbon/human(morgue_tray.loc, 1)
+		var/mob/living/carbon/human/new_human = new(morgue_tray.loc)
 
 		var/species_to_pick
-		if(LAZYLEN(usable_races))
-			if(!species_probability)
-				species_probability = 50
-				stack_trace("WARNING: morgue_cadaver_other_species_probability CONFIG SET TO 0% WHEN SPAWNING. DEFAULTING TO [species_probability]%.")
-			if(prob(species_probability))
-				species_to_pick = pick(usable_races)
-				var/datum/species/new_human_species = GLOB.species_list[species_to_pick]
-				if(new_human_species)
-					new_human.set_species(new_human_species)
-					new_human_species = new_human.dna.species
-					new_human_species.randomize_features(new_human)
-					new_human.fully_replace_character_name(new_human.real_name, new_human_species.random_name(new_human.gender, TRUE, TRUE))
-				else
-					stack_trace("failed to spawn cadaver with species ID [species_to_pick]") //if it's invalid they'll just be a human, so no need to worry too much aside from yelling at the server owner lol.
+
+		if(guaranteed_human_spawned && use_species)
+			if(LAZYLEN(usable_races))
+				if(!isnum(species_probability))
+					species_probability = 50
+					stack_trace("WARNING: morgue_cadaver_other_species_probability CONFIG SET TO 0% WHEN SPAWNING. DEFAULTING TO [species_probability]%.")
+				if(prob(species_probability))
+					species_to_pick = pick(usable_races)
+					var/datum/species/new_human_species = GLOB.species_list[species_to_pick]
+					if(new_human_species)
+						new_human.set_species(new_human_species)
+						new_human_species = new_human.dna.species
+						new_human_species.randomize_features(new_human)
+						new_human.fully_replace_character_name(new_human.real_name, new_human_species.random_name(new_human.gender, TRUE, TRUE))
+					else
+						stack_trace("failed to spawn cadaver with species ID [species_to_pick]") //if it's invalid they'll just be a human, so no need to worry too much aside from yelling at the server owner lol.
+		else
+			guaranteed_human_spawned = TRUE
 
 		body_bag.insert(new_human, TRUE)
 		body_bag.close()
@@ -722,17 +895,15 @@ INITIALIZE_IMMEDIATE(/obj/effect/mapping_helpers/no_lava)
 		body_bag.forceMove(morgue_tray)
 
 		new_human.death() //here lies the mans, rip in pepperoni.
-		for (var/part in new_human.organs) //randomly remove organs from each body, set those we keep to be in stasis
+		for (var/obj/item/organ/internal/part in new_human.organs) //randomly remove organs from each body, set those we keep to be in stasis
 			if (prob(40))
 				qdel(part)
 			else
-				var/obj/item/organ/O = part
-				O.organ_flags |= ORGAN_FROZEN
+				part.organ_flags |= ORGAN_FROZEN
 
 		morgue_tray.update_appearance()
 
 	qdel(src)
-
 
 //On Ian's birthday, the hop's office is decorated.
 /obj/effect/mapping_helpers/ianbirthday

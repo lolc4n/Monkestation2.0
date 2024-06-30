@@ -120,7 +120,7 @@
 	return TRUE
 
 /**
- * Parses specific items into a more reaadble form.
+ * Parses specific items into a more readble form.
  * Can be overriden by knoweldge subtypes.
  */
 /datum/heretic_knowledge/proc/parse_required_item(atom/item_path, number_of_things)
@@ -185,7 +185,6 @@
 					continue
 				how_much_to_use = min(required_atoms[requirement], sac_stack.amount)
 				break
-
 			sac_stack.use(how_much_to_use)
 			continue
 
@@ -538,7 +537,14 @@
 	animate(summoned, 10 SECONDS, alpha = 155)
 
 	message_admins("A [summoned.name] is being summoned by [ADMIN_LOOKUPFLW(user)] in [ADMIN_COORDJMP(summoned)].")
-	var/list/mob/dead/observer/candidates = poll_candidates_for_mob("Do you want to play as a [summoned.name]?", ROLE_HERETIC, FALSE, 10 SECONDS, summoned)
+	var/list/mob/dead/observer/candidates = SSpolling.poll_ghost_candidates_for_mob(
+		"Do you want to play as a [summoned.name]?",
+		check_jobban = ROLE_HERETIC,
+		poll_time = 10 SECONDS,
+		target_mob = summoned,
+		ignore_category = POLL_IGNORE_HERETIC_MONSTER,
+		role_name_text = summoned.name
+	)
 	if(!LAZYLEN(candidates))
 		loc.balloon_alert(user, "ritual failed, no ghosts!")
 		animate(summoned, 0.5 SECONDS, alpha = 0)

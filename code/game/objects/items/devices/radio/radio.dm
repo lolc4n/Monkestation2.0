@@ -17,7 +17,6 @@
 	throw_range = 7
 	w_class = WEIGHT_CLASS_SMALL
 	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT * 0.75, /datum/material/glass=SMALL_MATERIAL_AMOUNT * 0.25)
-	obj_flags = USES_TGUI
 
 	///if FALSE, broadcasting and listening dont matter and this radio shouldnt do anything
 	VAR_PRIVATE/on = TRUE
@@ -352,7 +351,7 @@
 	// Okay, the signal was never processed, send a mundane broadcast.
 	signal.data["compression"] = 0
 	signal.transmission_method = TRANSMISSION_RADIO
-	signal.levels = list(T.z)
+	signal.levels = SSmapping.get_connected_levels(T)
 	signal.broadcast()
 
 /obj/item/radio/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, list/message_mods = list(), message_range)
@@ -499,9 +498,9 @@
 	. = ..()
 	if(unscrewed)
 		return
-	if(broadcasting)
+	if(broadcasting && overlay_mic_idle)
 		. += overlay_mic_idle
-	if(listening)
+	if(listening && overlay_speaker_idle)
 		. += overlay_speaker_idle
 
 /obj/item/radio/screwdriver_act(mob/living/user, obj/item/tool)

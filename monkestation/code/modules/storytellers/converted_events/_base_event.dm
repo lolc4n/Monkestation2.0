@@ -90,11 +90,20 @@
 
 	var/job_check = 0
 	var/list/enemy_players = list()
-	for(var/enemy in enemy_roles)
-		var/datum/job/enemy_job = SSjob.GetJob(enemy)
-		if(enemy_job && SSjob.assigned_players_by_job[enemy_job.type])
-			job_check += length(SSjob.assigned_players_by_job[enemy_job.type])
-			enemy_players += SSjob.assigned_players_by_job[enemy_job.type]
+	if(roundstart)
+		for(var/enemy in enemy_roles)
+			var/datum/job/enemy_job = SSjob.GetJob(enemy)
+			if(enemy_job && SSjob.assigned_players_by_job[enemy_job.type])
+				job_check += length(SSjob.assigned_players_by_job[enemy_job.type])
+				enemy_players += SSjob.assigned_players_by_job[enemy_job.type]
+
+	else
+		for(var/mob/M in GLOB.alive_player_list)
+			if (M.stat == DEAD)
+				continue // Dead players cannot count as opponents
+			if (M.mind && (M.mind.assigned_role.title in enemy_roles))
+				job_check++ // Checking for "enemies" (such as sec officers). To be counters, they must either not be candidates to that
+				enemy_players += M
 
 	if(job_check >= required_enemies)
 		return return_players ? enemy_players : TRUE
@@ -201,11 +210,14 @@
 	var/list/possible_candidates = cast_control.get_candidates()
 	var/list/candidates = list()
 	if(cast_control == SSgamemode.current_roundstart_event && length(SSgamemode.roundstart_antag_minds))
+		log_storyteller("Running roundstart antagonist assignment, event: [src], roundstart_antag_minds: [english_list(SSgamemode.roundstart_antag_minds)]")
 		for(var/datum/mind/antag_mind in SSgamemode.roundstart_antag_minds)
 			if(!antag_mind.current)
+				log_storyteller("Roundstart antagonist setup error: antag_mind([antag_mind]) in roundstart_antag_minds without a set mob")
 				continue
 			candidates += antag_mind.current
-			SSgamemode.roundstart_antag_minds -= antag_mind //commented out for debugging in case something breaks
+			SSgamemode.roundstart_antag_minds -= antag_mind
+			log_storyteller("Roundstart antag_mind, [antag_mind]")
 
 	//guh
 	var/list/cliented_list = list()
@@ -220,11 +232,21 @@
 		if(prompted_picking)
 			var/client/picked_client = pick_n_take_weighted(weighted_candidates)
 			var/mob/picked_mob = picked_client.mob
+			log_storyteller("Prompted antag event mob: [picked_mob], special role: [picked_mob.mind?.special_role ? picked_mob.mind.special_role : "none"]")
 			if(picked_mob)
-				candidates |= poll_candidates("Would you like to be a [cast_control.name]", antag_flag, antag_flag, 20 SECONDS, FALSE, FALSE, list(picked_mob))
+				candidates |= SSpolling.poll_candidates(
+					question = "Would you like to be a [cast_control.name]?",
+					check_jobban = antag_flag,
+					role = antag_flag,
+					poll_time = 20 SECONDS,
+					group = list(picked_mob),
+					pic_source = antag_datum,
+					role_name_text = lowertext(cast_control.name),
+				)
 		else
 			var/client/picked_client = pick_n_take_weighted(weighted_candidates)
 			var/mob/picked_mob = picked_client.mob
+			log_storyteller("Picked antag event mob: [picked_mob], special role: [picked_mob.mind?.special_role ? picked_mob.mind.special_role : "none"]")
 			candidates |= picked_mob
 
 	for(var/i in 1 to antag_count)
@@ -233,6 +255,7 @@
 			break
 
 		var/mob/candidate = pick_n_take(candidates)
+		log_storyteller("Antag event spawned mob: [candidate], special role: [candidate.mind?.special_role ? candidate.mind.special_role : "none"]")
 
 		candidate.client?.prefs.reset_antag_rep()
 
@@ -263,7 +286,15 @@
 		mass_adjust_antag_rep(cliented_list, 1)
 
 	if(prompted_picking)
-		candidates = poll_candidates("Would you like to be a [cast_control.name]", antag_flag, antag_flag, 20 SECONDS, FALSE, FALSE, candidates)
+		candidates = SSpolling.poll_candidates(
+			question = "Would you like to be a [cast_control.name]?",
+			check_jobban = antag_flag,
+			role = antag_flag,
+			poll_time = 20 SECONDS,
+			group = candidates,
+			pic_source = antag_datum,
+			role_name_text = lowertext(cast_control.name),
+		)
 
 	var/list/weighted_candidates = return_antag_rep_weight(candidates)
 

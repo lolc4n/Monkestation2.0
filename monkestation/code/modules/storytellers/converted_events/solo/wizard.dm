@@ -4,6 +4,7 @@
 	typepath = /datum/round_event/antagonist/solo/wizard
 	antag_flag = ROLE_WIZARD
 	antag_datum = /datum/antagonist/wizard
+	shared_occurence_type = SHARED_HIGH_THREAT
 	restricted_roles = list(
 		JOB_CAPTAIN,
 		JOB_HEAD_OF_SECURITY,
@@ -21,7 +22,7 @@
 	required_enemies = 5
 	roundstart = TRUE
 	earliest_start = 0 SECONDS
-	weight = 3
+	weight = 2
 	min_players = 35
 	max_occurrences = 1
 

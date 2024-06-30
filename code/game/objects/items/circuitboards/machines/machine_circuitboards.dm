@@ -71,7 +71,6 @@
 	req_components = list(/datum/stock_part/capacitor = 1)
 	needs_anchored = FALSE
 
-
 /obj/item/circuitboard/machine/telecomms/broadcaster
 	name = "Subspace Broadcaster"
 	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
@@ -222,10 +221,10 @@
 		/datum/stock_part/manipulator = 1)
 	needs_anchored = FALSE
 
-/obj/item/circuitboard/machine/generator
+/obj/item/circuitboard/machine/thermoelectric_generator
 	name = "Thermo-Electric Generator"
 	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
-	build_path = /obj/machinery/power/generator
+	build_path = /obj/machinery/power/thermoelectric_generator
 	req_components = list()
 
 /obj/item/circuitboard/machine/ntnet_relay
@@ -962,20 +961,6 @@
 		/datum/stock_part/micro_laser = 1,
 		/obj/item/stack/sheet/glass = 1)
 
-/obj/item/circuitboard/machine/monkey_recycler
-	name = "Monkey Recycler"
-	greyscale_colors = CIRCUIT_COLOR_SCIENCE
-	build_path = /obj/machinery/monkey_recycler
-	req_components = list(
-		/datum/stock_part/matter_bin = 1,
-		/datum/stock_part/manipulator = 1)
-	needs_anchored = FALSE
-
-/obj/item/circuitboard/machine/processor/slime
-	name = "Slime Processor"
-	greyscale_colors = CIRCUIT_COLOR_SCIENCE
-	build_path = /obj/machinery/processor/slime
-
 /obj/item/circuitboard/machine/protolathe/department/science
 	name = "Departmental Protolathe - Science"
 	greyscale_colors = CIRCUIT_COLOR_SCIENCE
@@ -1079,6 +1064,19 @@
 	build_path = /obj/machinery/rnd/production/techfab/department/security
 
 //Service
+/obj/item/circuitboard/machine/photobooth
+	name = "Photobooth"
+	greyscale_colors = CIRCUIT_COLOR_SERVICE
+	build_path = /obj/machinery/photobooth
+	req_components = list(
+		/datum/stock_part/matter_bin = 1,
+		/datum/stock_part/manipulator = 1,
+	)
+
+/obj/item/circuitboard/machine/photobooth/security
+	name = "Security Photobooth"
+	greyscale_colors = CIRCUIT_COLOR_SECURITY
+	build_path = /obj/machinery/photobooth/security
 
 /obj/item/circuitboard/machine/biogenerator
 	name = "Biogenerator"
@@ -1199,7 +1197,7 @@
 /obj/item/circuitboard/machine/hydroponics
 	name = "Hydroponics Tray"
 	greyscale_colors = CIRCUIT_COLOR_SERVICE
-	build_path = /obj/machinery/hydroponics/constructable
+	build_path = /obj/machinery/growing/tray
 	req_components = list(
 		/datum/stock_part/matter_bin = 2,
 		/datum/stock_part/manipulator = 1,
@@ -1227,14 +1225,9 @@
 	needs_anchored = FALSE
 
 /obj/item/circuitboard/machine/processor/screwdriver_act(mob/living/user, obj/item/tool)
-	if(build_path == /obj/machinery/processor)
-		name = "Slime Processor"
-		build_path = /obj/machinery/processor/slime
-		to_chat(user, span_notice("Name protocols successfully updated."))
-	else
-		name = "Food Processor"
-		build_path = /obj/machinery/processor
-		to_chat(user, span_notice("Defaulting name protocols."))
+	name = "Food Processor"
+	build_path = /obj/machinery/processor
+	to_chat(user, span_notice("Defaulting name protocols."))
 	return TRUE
 
 /obj/item/circuitboard/machine/protolathe/department/service
@@ -1483,8 +1476,8 @@
 	greyscale_colors = CIRCUIT_COLOR_SCIENCE
 	build_path = /obj/machinery/artifact_xray
 	req_components = list(
-		/obj/item/stock_parts/capacitor = 1, 
-		/datum/stock_part/scanning_module = 1, 
+		/obj/item/stock_parts/capacitor = 1,
+		/datum/stock_part/scanning_module = 1,
 		/obj/item/stock_parts/micro_laser = 1)
 
 /obj/item/circuitboard/machine/artifactheater
@@ -1505,7 +1498,7 @@
 		/datum/stock_part/scanning_module = 1,
 		/obj/item/stack/cable_coil = 1,
 		/obj/item/stack/sheet/glass = 3)
-		
+
 /obj/item/circuitboard/machine/navbeacon
 	name = "Bot Navigational Beacon"
 	greyscale_colors = CIRCUIT_COLOR_SCIENCE

@@ -237,6 +237,7 @@
 		/obj/item/reagent_containers/honeycomb,
 		/obj/item/graft,
 		/obj/item/disk/plantgene,
+		/obj/item/paper,
 		))
 ////////
 
@@ -327,8 +328,9 @@
 	atom_storage.set_holdable(list(
 		/obj/item/book,
 		/obj/item/spellbook,
-		/obj/item/storage/book,
-		))
+		/obj/item/storage/book, //TG#75350 Refactors these to be just /obj/item/book, but it also add burning bibles. May look back at it another time
+		/obj/item/poster,
+	))
 
 /*
  * Trays - Agouri
@@ -445,6 +447,7 @@
 		/obj/item/reagent_containers/cup/glass/waterbottle,
 		/obj/item/reagent_containers/cup/beaker,
 		/obj/item/reagent_containers/cup/bottle,
+		/obj/item/reagent_containers/cup/tube,
 		/obj/item/reagent_containers/medigel,
 		/obj/item/reagent_containers/pill,
 		/obj/item/reagent_containers/syringe,
@@ -475,8 +478,11 @@
 		/obj/item/reagent_containers/dropper,
 		/obj/item/reagent_containers/cup/beaker,
 		/obj/item/reagent_containers/cup/bottle,
+		/obj/item/reagent_containers/cup/tube,
 		/obj/item/reagent_containers/hypospray/medipen,
 		/obj/item/reagent_containers/syringe,
+		/obj/item/weapon/virusdish,//Monkestation Addition
+		/obj/item/food/monkeycube/mouse,//Monkestation Addition
 		))
 
 /*
@@ -504,9 +510,11 @@
 		/obj/item/reagent_containers/dropper,
 		/obj/item/reagent_containers/cup/beaker,
 		/obj/item/reagent_containers/cup/bottle,
+		/obj/item/reagent_containers/cup/tube,
 		/obj/item/reagent_containers/syringe,
 		/obj/item/slime_extract,
 		/obj/item/swab,
+		/obj/item/stack/biomass // monke: make science bags able to hold biomass cubes
 		))
 
 /*

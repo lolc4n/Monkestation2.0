@@ -51,6 +51,8 @@
 	var/list/unattached_flesh
 	var/flesh_number = 0
 	var/datum/bank_account/current_insurance
+	/// Whether autoprocessing will automatically clone, or just scan.
+	var/auto_clone = TRUE
 	fair_market_price = 5 // He nodded, because he knew I was right. Then he swiped his credit card to pay me for arresting him.
 	payment_department = ACCOUNT_MED
 
@@ -383,6 +385,9 @@
 
 	if(!mob_occupant)
 		return
+		
+	exp_clone_check(mob_occupant)
+	
 	current_insurance = null
 	REMOVE_TRAIT(mob_occupant, TRAIT_STABLEHEART, CLONING_POD_TRAIT)
 	REMOVE_TRAIT(mob_occupant, TRAIT_STABLELIVER, CLONING_POD_TRAIT)
@@ -410,6 +415,9 @@
 	unattached_flesh.Cut()
 
 	occupant = null
+	
+/obj/machinery/clonepod/proc/exp_clone_check(mob_occupant)
+	return
 
 /obj/machinery/clonepod/proc/malfunction()
 	var/mob/living/mob_occupant = occupant

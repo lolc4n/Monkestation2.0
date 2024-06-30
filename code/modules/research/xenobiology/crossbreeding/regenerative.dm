@@ -197,8 +197,8 @@ Regenerative extracts:
 /obj/item/slimecross/regenerative/green/core_effect(mob/living/target, mob/user)
 	if(isslime(target))
 		target.visible_message(span_warning("The [target] suddenly changes color!"))
-		var/mob/living/simple_animal/slime/S = target
-		S.random_colour()
+		var/mob/living/basic/slime/S = target
+		S.start_mutating(TRUE)
 	if(isjellyperson(target))
 		target.reagents.add_reagent(/datum/reagent/mutationtoxin/jelly,5)
 
@@ -237,7 +237,7 @@ Regenerative extracts:
 /obj/item/slimecross/regenerative/black/core_effect_before(mob/living/target, mob/user)
 	var/dummytype = target.type
 	if(ismegafauna(target)) //Prevents megafauna duping in a lame way
-		dummytype = /mob/living/simple_animal/slime
+		dummytype = /mob/living/basic/slime
 		to_chat(user, span_warning("The milky goo flows over [target], falling into a weak puddle."))
 	var/mob/living/dummy = new dummytype(target.loc)
 	to_chat(target, span_notice("The milky goo flows from your skin, forming an imperfect copy of you."))
@@ -247,6 +247,7 @@ Regenerative extracts:
 		T.dna.transfer_identity(D)
 		D.updateappearance(mutcolor_update=1)
 		D.real_name = T.real_name
+		D.update_name_tag(D.real_name) // monkestation edit: name tags
 	dummy.adjustBruteLoss(target.getBruteLoss())
 	dummy.adjustFireLoss(target.getFireLoss())
 	dummy.adjustToxLoss(target.getToxLoss())

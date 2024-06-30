@@ -18,7 +18,7 @@
 			var/datum/loadout_item/listed_loadout = milestone_type
 			if(!force)
 				for(var/path in user.prefs.job_rewards_claimed[key_id])
-					if(path == initial(milestone_type))
+					if(path == milestone_type)
 						return
 			if(!user.prefs.inventory[initial(listed_loadout.item_path)])
 				user.prefs.inventory += initial(listed_loadout.item_path)
@@ -57,6 +57,14 @@
 
 /client
 	var/list/redeemed_rewards = list()
+
+/client/verb/open_xp_menu()
+	set category = "IC"
+	set name = "Open XP Menu"
+	set desc = "List job xp."
+
+	xp_menu = new(src)
+	xp_menu.ui_interact(usr)
 
 /client/verb/claim_job_reward()
 	set category = "IC"
