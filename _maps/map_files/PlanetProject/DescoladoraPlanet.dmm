@@ -8,7 +8,7 @@
 "bs" = (/obj/structure/bed/pod,/obj/item/bedsheet/dorms,/obj/effect/decal/cleanable/dirt,/turf/open/floor/wood{baseturfs = /turf/open/misc/dirt/jungle},/area/space)
 "bt" = (/obj/machinery/door/poddoor{id = "bunkerinterior"},/obj/machinery/door/airlock/highsecurity{desc = "Nothing to see here, folks, just an inconspicuous airlock. Now go away!"; name = "Inconspicuous Airlock"},/obj/effect/mapping_helpers/airlock/access/all/away/general,/obj/structure/cable,/obj/effect/mapping_helpers/airlock/locked,/turf/open/floor/iron,/area/space)
 "bA" = (/obj/structure/flora/bush/fullgrass/style_random,/obj/structure/flora/bush/fullgrass/style_random,/turf/open/floor/grass{desc = "A patch of short grass."},/area/space)
-"bC" = (/obj/item/kirbyplants/dead,/obj/effect/turf_decal/siding/dark_blue/corner{dir = 8},/obj/effect/turf_decal/tile/dark/anticorner/contrasted{dir = 4},/turf/open/floor/iron/corner{dir = 8},/area/space)
+"bC" = (/obj/effect/turf_decal/siding/dark_blue/corner{dir = 8},/obj/effect/turf_decal/tile/dark/anticorner/contrasted{dir = 4},/turf/open/floor/iron/corner{dir = 8},/area/space)
 "bG" = (/obj/effect/decal/cleanable/blood/tracks{dir = 10},/obj/effect/mapping_helpers/broken_floor,/turf/open/floor/wood{baseturfs = /turf/open/misc/dirt/jungle},/area/space)
 "bJ" = (/obj/effect/turf_decal/weather/sand{dir = 6},/turf/open/misc/beach/sand,/area/space)
 "bM" = (/obj/effect/turf_decal/weather/dirt{dir = 5},/obj/structure/flora/bush/fullgrass/style_random,/obj/structure/flora/bush/large/style_random,/turf/open/floor/grass{desc = "A patch of short grass."},/area/space)
