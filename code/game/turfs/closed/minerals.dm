@@ -220,7 +220,7 @@
 /turf/closed/mineral/random/breathable
 	turf_type = /turf/open/misc/asteroid/basalt
 	baseturfs = /turf/open/misc/asteroid/basalt
-	initial_gas_mix = o2=22;n2=82;TEMP=293.15
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
 	defer_change = TRUE
 
 /// Returns a list of the chances for minerals to spawn.
