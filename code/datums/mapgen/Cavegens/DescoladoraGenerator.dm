@@ -1,18 +1,20 @@
-/datum/map_generator/cave_generator/lavaland
+/datum/map_generator/cave_generator/descoladora
 	weighted_open_turf_types = list(/turf/open/misc/asteroid/basalt = 1)
-	weighted_closed_turf_types = list(/turf/closed/mineral/random/volcanic = 1)
+	weighted_closed_turf_types = list(/turf/closed/mineral/random/breathable = 1)
 
 	weighted_mob_spawn_list = list(
-		/obj/effect/spawner/random/lavaland_mob/goliath = 50,
-		/obj/effect/spawner/random/lavaland_mob/legion = 30,
-		/obj/effect/spawner/random/lavaland_mob/watcher = 40,
-		/mob/living/basic/mining/bileworm = 20,
-		/mob/living/basic/mining/brimdemon = 20,
-		/mob/living/basic/mining/lobstrosity/lava = 20,
-		/mob/living/basic/mining/goldgrub = 10,
-		/obj/structure/spawner/lavaland = 2,
-		/obj/structure/spawner/lavaland/goliath = 3,
-		/obj/structure/spawner/lavaland/legion = 3,
+		/mob/living/basic/bat = 50,
+		/mob/living/basic/lightgeist = 2,
+		/mob/living/basic/spider/giant/guard = 20
+		/mob/living/basic/spider/giant/hunter = 20
+		/mob/living/basic/spider/giant/scout = 6
+		/mob/living/basic/mining/bileworm = 10,
+		/mob/living/basic/mining/lobstrosity/lava = 5,
+		/mob/living/basic/mining/goldgrub = 8,
+		/mob/living/basic/mining/basilisk = 8,
+		/mob/living/basic/mining/hivelord = 12,
+		/obj/structure/spawner/mining/basilisk = 2,
+		/obj/structure/spawner/mining/hivelord = 3,
 	)
 
 	weighted_flora_spawn_list = list(
